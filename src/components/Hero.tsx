@@ -6,16 +6,16 @@ import { SITE_CONFIG } from '@/lib/constants';
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-accent/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold text-high-contrast mb-6">
             Ciao, sono {' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+            <span className="hero-name-gradient hero-name-glow">
               {SITE_CONFIG.name}
             </span>
           </h1>
@@ -24,7 +24,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto"
+            className="text-xl md:text-2xl text-high-contrast-muted mb-8 max-w-3xl mx-auto"
           >
             {SITE_CONFIG.description}
           </motion.p>
@@ -37,13 +37,13 @@ export default function Hero() {
           >
             <Link
               href="/projects"
-              className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200"
+              className="btn-primary"
             >
               Vedi i miei progetti
             </Link>
             <Link
               href="/contact"
-              className="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors duration-200"
+              className="btn-secondary"
             >
               Contattami
             </Link>
@@ -60,12 +60,12 @@ export default function Hero() {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center"
+            className="w-6 h-10 border-2 border-high-contrast-muted rounded-full flex justify-center"
           >
             <motion.div
               animate={{ y: [0, 12, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="w-1 h-3 bg-gray-400 rounded-full mt-2"
+              className="w-1 h-3 bg-primary rounded-full mt-2"
             />
           </motion.div>
         </motion.div>

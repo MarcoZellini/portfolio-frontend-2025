@@ -1,26 +1,259 @@
 @import "tailwindcss";
 
+/* Light theme - Palette Calda */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colori Primari */
+  --primary: #8b4b7c;        /* Warm Rose - bottoni primari, CTA */
+  --secondary: #2d1a28;      /* Deep Plum più scuro - titoli, testi principali */
+  --accent: #a35d91;         /* Light Rose - hover, interazioni */
+  
+  /* Neutri */
+  --background: #f5f4f5;     /* Background principale */
+  --foreground: #2d1a28;     /* Testi principali con contrasto migliorato */
+  --card: #ffffff;           /* Card e sezioni */
+  --card-foreground: #2d1a28; /* Testi nelle card */
+  --muted: #6b5a6b;          /* Testi secondari con contrasto migliorato */
+  --muted-foreground: #6b5a6b; /* Testi secondari con contrasto migliorato */
+  --border: #d4d0d4;         /* Bordi e divisori */
+  --input: #d4d0d4;          /* Input borders */
+  --ring: #8b4b7c;           /* Focus ring */
+  
+  /* Colori ad alto contrasto per leggibilità */
+  --high-contrast: #1a0f17;  /* Testo ad alto contrasto */
+  --high-contrast-muted: #4a3a4a; /* Testo secondario ad alto contrasto */
+  --nav-foreground: #2d1a28; /* Colore specifico per navbar */
+  --nav-muted: #6b5a6b;      /* Colore secondario navbar */
+  
+  /* Funzionali */
+  --success: #7c9885;        /* Verde salvia */
+  --warning: #c96d4a;        /* Arancione caldo */
+  --info: #8294a8;           /* Blu polveroso */
+  --destructive: #c96d4a;    /* Arancione per errori */
+  --destructive-foreground: #ffffff;
+  
+  /* Utility */
+  --radius: 0.75rem;         /* 12px border radius */
+  --radius-sm: 0.5rem;       /* 8px border radius */
+}
+
+/* Dark theme - Palette Calda */
+.dark {
+  --background: #0f0a0e;     /* Background scuro */
+  --foreground: #e8e0e8;     /* Testi chiari */
+  --card: #1a0f17;           /* Card scure */
+  --card-foreground: #e8e0e8; /* Testi nelle card scure */
+  --muted: #C2C1C2;          /* Testi secondari scuri */
+  --muted-foreground: #C2C1C2; /* Testi secondari scuri */
+  --border: #2d1828;         /* Bordi scuri */
+  --input: #2d1828;          /* Input borders scuri */
+  --ring: #a35d91;           /* Focus ring scuro */
+  
+  /* Colori primari rimangono uguali */
+  --primary: #8b4b7c;
+  --secondary: #e8e0e8;      /* Testi principali in dark mode */
+  --accent: #a35d91;
+  
+  /* Colori ad alto contrasto per dark mode */
+  --high-contrast: #ffffff;  /* Testo ad alto contrasto in dark mode */
+  --high-contrast-muted: #e0d0e0; /* Testo secondario ad alto contrasto */
+  --nav-foreground: #e8e0e8; /* Colore specifico per navbar */
+  --nav-muted: #C2C1C2;      /* Colore secondario navbar */
+  
+  /* Funzionali */
+  --success: #7c9885;
+  --warning: #c96d4a;
+  --info: #8294a8;
+  --destructive: #c96d4a;
+  --destructive-foreground: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+  --color-high-contrast: var(--high-contrast);
+  --color-high-contrast-muted: var(--high-contrast-muted);
+  --color-nav-foreground: var(--nav-foreground);
+  --color-nav-muted: var(--nav-muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+/* Fallback per sistemi che non supportano le classi */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not(.light) {
+    --background: #0f0a0e;
+    --foreground: #e8e0e8;
+    --card: #1a0f17;
+    --card-foreground: #e8e0e8;
+    --muted: #C2C1C2;
+    --muted-foreground: #C2C1C2;
+    --border: #2d1828;
+    --input: #2d1828;
+    --ring: #a35d91;
+    --secondary: #e8e0e8;
   }
+}
+
+* {
+  border-color: var(--border);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  line-height: 1.6;
+}
+
+/* Typography Scale */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--secondary);
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--secondary);
+  line-height: 1.3;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--secondary);
+  line-height: 1.4;
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--muted-foreground);
+  line-height: 1.6;
+}
+
+/* Button Styles */
+.btn-primary {
+  background: var(--primary);
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #7a4269;
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--card);
+  color: var(--secondary);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent);
+}
+
+/* Card Styles */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(139, 75, 124, 0.1);
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 24px rgba(139, 75, 124, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Smooth transitions per tutti gli elementi */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+/* Classi utility per leggibilità e contrasto */
+.text-high-contrast {
+  color: var(--high-contrast);
+}
+
+.text-high-contrast-muted {
+  color: var(--high-contrast-muted);
+}
+
+.text-nav-foreground {
+  color: var(--nav-foreground);
+}
+
+.text-nav-muted {
+  color: var(--nav-muted);
+}
+
+/* Miglioramento per i titoli */
+h1, h2, h3 {
+  color: var(--high-contrast);
+}
+
+/* Miglioramento per i paragrafi */
+p {
+  color: var(--high-contrast-muted);
+}
+
+/* Classe per testi che devono essere sempre leggibili */
+.text-readable {
+  color: var(--high-contrast);
+}
+
+.text-readable-muted {
+  color: var(--high-contrast-muted);
+}
+
+/* Effetto glow per il nome in dark mode */
+.dark .hero-name-glow {
+  filter: drop-shadow(0 0 20px rgba(163, 93, 145, 0.3)) drop-shadow(0 0 40px rgba(139, 75, 124, 0.2));
+}
+
+/* Miglioramento del gradiente per il nome */
+.hero-name-gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 50%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.dark .hero-name-gradient {
+  filter: drop-shadow(0 0 20px rgba(163, 93, 145, 0.4)) drop-shadow(0 0 40px rgba(139, 75, 124, 0.2));
 }
