@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Frontend
 
-## Getting Started
+Un portfolio personale moderno costruito con Next.js, TypeScript, Tailwind CSS e Framer Motion.
 
-First, run the development server:
+## 🚀 Tecnologie Utilizzate
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js 15** - Framework React con App Router
+- **TypeScript** - Tipizzazione statica
+- **Tailwind CSS** - Framework CSS utility-first
+- **Framer Motion** - Libreria per animazioni
+- **ESLint** - Linting del codice
+
+## 📁 Struttura del Progetto
+
+```
+src/
+├── app/                 # App Router di Next.js
+│   ├── layout.tsx      # Layout principale
+│   └── page.tsx        # Homepage
+├── components/         # Componenti React
+│   ├── Navigation.tsx  # Barra di navigazione
+│   └── Hero.tsx        # Sezione hero
+├── data/              # Dati statici
+│   ├── projects.ts    # Progetti portfolio
+│   └── skills.ts      # Competenze
+├── lib/               # Utilities e costanti
+│   └── constants.ts   # Configurazioni
+├── types/             # Tipi TypeScript
+│   └── index.ts       # Definizioni tipi
+└── styles/            # Stili personalizzati
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Setup e Sviluppo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Installa le dipendenze:**
+   ```bash
+   npm install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Avvia il server di sviluppo:**
+   ```bash
+   npm run dev
+   ```
 
-## Learn More
+3. **Apri il browser:**
+   Naviga su [http://localhost:3000](http://localhost:3000)
 
-To learn more about Next.js, take a look at the following resources:
+## 📝 Personalizzazione
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Configurazione Base
+Modifica `src/lib/constants.ts` per personalizzare:
+- Nome e titolo del sito
+- Descrizione e metadati
+- Link social
+- Navigazione
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Dati Portfolio
+Aggiorna i file in `src/data/`:
+- `projects.ts` - I tuoi progetti
+- `skills.ts` - Le tue competenze
 
-## Deploy on Vercel
+### Styling
+Personalizza i colori e lo stile in:
+- `src/app/globals.css` - Stili globali
+- Componenti individuali per stili specifici
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🎨 Componenti Disponibili
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Navigation** - Barra di navigazione responsive
+- **Hero** - Sezione di presentazione principale
+
+## 📱 Responsive Design
+
+Il portfolio è completamente responsive e ottimizzato per:
+- Desktop (1024px+)
+- Tablet (768px - 1023px)
+- Mobile (320px - 767px)
+
+## 🚀 Prossimi Passi
+
+- [ ] Aggiungere sezione About
+- [ ] Implementare pagina Projects
+- [ ] Creare sezione Contact
+- [ ] Aggiungere animazioni avanzate
+- [ ] Implementare dark mode
+- [ ] Ottimizzare SEO
