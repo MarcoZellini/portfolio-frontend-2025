@@ -117,7 +117,7 @@ export function ProjectVisuals({ mockups, diagrams, demoVideo }: ProjectVisualsP
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
                     className="relative group cursor-pointer"
-                    onClick={() => openImageModal(mockup, index)}
+                    onClick={() => openImageModal(mockup)}
                   >
                     <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg overflow-hidden">
                       <Image
