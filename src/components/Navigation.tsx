@@ -4,13 +4,12 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { NAVIGATION } from '@/lib/constants';
-import ThemeToggle from './ThemeToggle';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full bg-card/90 dark:bg-card/90 backdrop-blur-md border-b border-border z-50 shadow-sm">
+    <nav className="fixed top-0 w-full bg-card/90 backdrop-blur-md border-b border-border z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -29,15 +28,13 @@ export default function Navigation() {
                 {item.name}
               </Link>
             ))}
-            <ThemeToggle />
           </div>
 
-          {/* Mobile menu button and theme toggle */}
+          {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-2">
-            <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-nav-muted hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-card rounded-md p-1"
+              className="text-nav-muted hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-card rounded-md p-1"
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path

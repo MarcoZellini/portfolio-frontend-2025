@@ -13,7 +13,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-6xl font-bold text-high-contrast mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold text-secondary mb-6">
             Ciao, sono {' '}
             <span className="hero-name-gradient hero-name-glow">
               {SITE_CONFIG.name}
@@ -24,7 +24,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-2xl text-high-contrast-muted mb-8 max-w-3xl mx-auto"
+            className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto"
           >
             {SITE_CONFIG.description}
           </motion.p>
@@ -60,7 +60,7 @@ export default function Hero() {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-high-contrast-muted rounded-full flex justify-center"
+            className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center"
           >
             <motion.div
               animate={{ y: [0, 12, 0] }}

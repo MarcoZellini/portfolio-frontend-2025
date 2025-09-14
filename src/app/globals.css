@@ -1,30 +1,28 @@
 @import "tailwindcss";
 
-/* Light theme - Palette Calda */
+/* Dark Mode Only - Palette Calda Ottimizzata */
 :root {
-  /* Colori Primari */
-  --primary: #8b4b7c;        /* Warm Rose - bottoni primari, CTA */
-  --secondary: #2d1a28;      /* Deep Plum più scuro - titoli, testi principali */
-  --accent: #a35d91;         /* Light Rose - hover, interazioni */
+  /* Colori Primari - Ottimizzati per Dark Mode */
+  --primary: #a35d91;        /* Accent Rose - più saturo e visibile */
+  --secondary: #e8e0e8;      /* Testi principali - contrasto ottimale */
+  --accent: #c96d4a;         /* Arancione caldo - per hover e interazioni */
   
-  /* Neutri */
-  --background: #f5f4f5;     /* Background principale */
-  --foreground: #2d1a28;     /* Testi principali con contrasto migliorato */
-  --card: #ffffff;           /* Card e sezioni */
-  --card-foreground: #2d1a28; /* Testi nelle card */
-  --muted: #6b5a6b;          /* Testi secondari con contrasto migliorato */
-  --muted-foreground: #6b5a6b; /* Testi secondari con contrasto migliorato */
-  --border: #d4d0d4;         /* Bordi e divisori */
-  --input: #d4d0d4;          /* Input borders */
-  --ring: #8b4b7c;           /* Focus ring */
+  /* Background e Superfici */
+  --background: #0a0509;     /* Background più profondo e ricco */
+  --foreground: #e8e0e8;     /* Testi principali */
+  --card: #1a0f17;           /* Card scure con più profondità */
+  --card-foreground: #e8e0e8; /* Testi nelle card */
+  --muted: #C2C1C2;          /* Testi secondari */
+  --muted-foreground: #C2C1C2; /* Testi secondari */
+  --border: #2d1828;         /* Bordi scuri */
+  --input: #2d1828;          /* Input borders */
+  --ring: #a35d91;           /* Focus ring */
   
-  /* Colori ad alto contrasto per leggibilità */
-  --high-contrast: #1a0f17;  /* Testo ad alto contrasto */
-  --high-contrast-muted: #4a3a4a; /* Testo secondario ad alto contrasto */
-  --nav-foreground: #2d1a28; /* Colore specifico per navbar */
-  --nav-muted: #6b5a6b;      /* Colore secondario navbar */
+  /* Colori per Navigazione */
+  --nav-foreground: #e8e0e8; /* Colore specifico per navbar */
+  --nav-muted: #C2C1C2;      /* Colore secondario navbar */
   
-  /* Funzionali */
+  /* Funzionali - Ottimizzati per Dark Mode */
   --success: #7c9885;        /* Verde salvia */
   --warning: #c96d4a;        /* Arancione caldo */
   --info: #8294a8;           /* Blu polveroso */
@@ -34,37 +32,6 @@
   /* Utility */
   --radius: 0.75rem;         /* 12px border radius */
   --radius-sm: 0.5rem;       /* 8px border radius */
-}
-
-/* Dark theme - Palette Calda */
-.dark {
-  --background: #0f0a0e;     /* Background scuro */
-  --foreground: #e8e0e8;     /* Testi chiari */
-  --card: #1a0f17;           /* Card scure */
-  --card-foreground: #e8e0e8; /* Testi nelle card scure */
-  --muted: #C2C1C2;          /* Testi secondari scuri */
-  --muted-foreground: #C2C1C2; /* Testi secondari scuri */
-  --border: #2d1828;         /* Bordi scuri */
-  --input: #2d1828;          /* Input borders scuri */
-  --ring: #a35d91;           /* Focus ring scuro */
-  
-  /* Colori primari rimangono uguali */
-  --primary: #8b4b7c;
-  --secondary: #e8e0e8;      /* Testi principali in dark mode */
-  --accent: #a35d91;
-  
-  /* Colori ad alto contrasto per dark mode */
-  --high-contrast: #ffffff;  /* Testo ad alto contrasto in dark mode */
-  --high-contrast-muted: #e0d0e0; /* Testo secondario ad alto contrasto */
-  --nav-foreground: #e8e0e8; /* Colore specifico per navbar */
-  --nav-muted: #C2C1C2;      /* Colore secondario navbar */
-  
-  /* Funzionali */
-  --success: #7c9885;
-  --warning: #c96d4a;
-  --info: #8294a8;
-  --destructive: #c96d4a;
-  --destructive-foreground: #ffffff;
 }
 
 @theme inline {
@@ -85,29 +52,12 @@
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-info: var(--info);
-  --color-high-contrast: var(--high-contrast);
-  --color-high-contrast-muted: var(--high-contrast-muted);
   --color-nav-foreground: var(--nav-foreground);
   --color-nav-muted: var(--nav-muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-/* Fallback per sistemi che non supportano le classi */
-@media (prefers-color-scheme: dark) {
-  :root:not(.light) {
-    --background: #0f0a0e;
-    --foreground: #e8e0e8;
-    --card: #1a0f17;
-    --card-foreground: #e8e0e8;
-    --muted: #C2C1C2;
-    --muted-foreground: #C2C1C2;
-    --border: #2d1828;
-    --input: #2d1828;
-    --ring: #a35d91;
-    --secondary: #e8e0e8;
-  }
-}
 
 * {
   border-color: var(--border);
@@ -184,19 +134,39 @@ p {
   border-color: var(--accent);
 }
 
-/* Card Styles */
+/* Card Styles - Ottimizzate per Dark Mode */
 .card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(139, 75, 124, 0.1);
-  transition: all 0.2s ease;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(163, 93, 145, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, rgba(163, 93, 145, 0.05) 0%, rgba(201, 109, 74, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .card:hover {
-  box-shadow: 0 8px 24px rgba(139, 75, 124, 0.15);
-  transform: translateY(-2px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(163, 93, 145, 0.2);
+  transform: translateY(-4px);
+  border-color: rgba(163, 93, 145, 0.3);
+}
+
+.card:hover::before {
+  opacity: 1;
 }
 
 /* Smooth transitions per tutti gli elementi */
@@ -204,15 +174,7 @@ p {
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-/* Classi utility per leggibilità e contrasto */
-.text-high-contrast {
-  color: var(--high-contrast);
-}
-
-.text-high-contrast-muted {
-  color: var(--high-contrast-muted);
-}
-
+/* Classi utility per navigazione */
 .text-nav-foreground {
   color: var(--nav-foreground);
 }
@@ -221,39 +183,101 @@ p {
   color: var(--nav-muted);
 }
 
-/* Miglioramento per i titoli */
-h1, h2, h3 {
-  color: var(--high-contrast);
+/* Effetto glow ottimizzato per il nome */
+.hero-name-glow {
+  filter: drop-shadow(0 0 30px rgba(163, 93, 145, 0.5)) drop-shadow(0 0 60px rgba(201, 109, 74, 0.3));
 }
 
-/* Miglioramento per i paragrafi */
-p {
-  color: var(--high-contrast-muted);
-}
-
-/* Classe per testi che devono essere sempre leggibili */
-.text-readable {
-  color: var(--high-contrast);
-}
-
-.text-readable-muted {
-  color: var(--high-contrast-muted);
-}
-
-/* Effetto glow per il nome in dark mode */
-.dark .hero-name-glow {
-  filter: drop-shadow(0 0 20px rgba(163, 93, 145, 0.3)) drop-shadow(0 0 40px rgba(139, 75, 124, 0.2));
-}
-
-/* Miglioramento del gradiente per il nome */
+/* Gradiente migliorato per il nome */
 .hero-name-gradient {
   background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 50%, var(--primary) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  filter: drop-shadow(0 0 30px rgba(163, 93, 145, 0.5)) drop-shadow(0 0 60px rgba(201, 109, 74, 0.3));
+  animation: glow-pulse 3s ease-in-out infinite alternate;
 }
 
-.dark .hero-name-gradient {
-  filter: drop-shadow(0 0 20px rgba(163, 93, 145, 0.4)) drop-shadow(0 0 40px rgba(139, 75, 124, 0.2));
+@keyframes glow-pulse {
+  0% {
+    filter: drop-shadow(0 0 30px rgba(163, 93, 145, 0.5)) drop-shadow(0 0 60px rgba(201, 109, 74, 0.3));
+  }
+  100% {
+    filter: drop-shadow(0 0 40px rgba(163, 93, 145, 0.7)) drop-shadow(0 0 80px rgba(201, 109, 74, 0.5));
+  }
+}
+
+/* Effetti speciali per la navbar */
+nav {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Miglioramenti per i bottoni */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  box-shadow: 0 4px 16px rgba(163, 93, 145, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 8px 24px rgba(163, 93, 145, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Mobile-first responsive improvements */
+@media (max-width: 640px) {
+  .card {
+    padding: 1rem;
+  }
+  
+  .btn-primary, .btn-secondary {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .text-4xl {
+    font-size: 2rem;
+  }
+  
+  .text-5xl {
+    font-size: 2.5rem;
+  }
+  
+  .text-6xl {
+    font-size: 3rem;
+  }
+  
+  /* Contact page specific mobile styles */
+  .contact-form-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .contact-process-steps {
+    padding-left: 1rem;
+  }
+  
+  .contact-process-steps::before {
+    left: 0.5rem;
+  }
 }

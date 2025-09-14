@@ -2,73 +2,12 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-
-const projects = [
-  {
-    id: 1,
-    title: "E-Commerce Platform",
-    description: "Piattaforma e-commerce completa con carrello, pagamenti e dashboard admin. Realizzata con Next.js, TypeScript e Stripe.",
-    image: "/api/placeholder/600/400",
-    tech: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS", "Prisma"],
-    demo: "https://demo.example.com",
-    github: "https://github.com/example/ecommerce",
-    featured: true
-  },
-  {
-    id: 2,
-    title: "Task Management App",
-    description: "Applicazione per la gestione dei task con drag & drop, notifiche real-time e collaborazione in team.",
-    image: "/api/placeholder/600/400",
-    tech: ["React", "Node.js", "Socket.io", "MongoDB", "Express"],
-    demo: "https://demo.example.com",
-    github: "https://github.com/example/taskapp",
-    featured: true
-  },
-  {
-    id: 3,
-    title: "Weather Dashboard",
-    description: "Dashboard meteorologica con previsioni dettagliate, mappe interattive e notifiche personalizzate.",
-    image: "/api/placeholder/600/400",
-    tech: ["Vue.js", "Chart.js", "OpenWeather API", "PWA"],
-    demo: "https://demo.example.com",
-    github: "https://github.com/example/weather",
-    featured: false
-  },
-  {
-    id: 4,
-    title: "Blog CMS",
-    description: "Sistema di gestione contenuti per blog con editor markdown, SEO ottimizzato e sistema di commenti.",
-    image: "/api/placeholder/600/400",
-    tech: ["Next.js", "MDX", "Sanity", "Vercel"],
-    demo: "https://demo.example.com",
-    github: "https://github.com/example/blog-cms",
-    featured: false
-  },
-  {
-    id: 5,
-    title: "Portfolio Template",
-    description: "Template responsive per portfolio con dark mode, animazioni smooth e ottimizzato per le performance.",
-    image: "/api/placeholder/600/400",
-    tech: ["React", "Framer Motion", "Tailwind CSS", "Vite"],
-    demo: "https://demo.example.com",
-    github: "https://github.com/example/portfolio-template",
-    featured: false
-  },
-  {
-    id: 6,
-    title: "API RESTful",
-    description: "API REST completa con autenticazione JWT, rate limiting, documentazione Swagger e test automatizzati.",
-    image: "/api/placeholder/600/400",
-    tech: ["Node.js", "Express", "JWT", "Swagger", "Jest"],
-    demo: "https://api.example.com/docs",
-    github: "https://github.com/example/api",
-    featured: false
-  }
-];
+import Image from 'next/image';
+import { projects } from '@/data/projects';
 
 export default function Projects() {
   const featuredProjects = projects.filter(project => project.featured);
-  const otherProjects = projects.filter(project => !project.featured);
+  const otherProjects = projects.filter(project => !project.featured).slice(0, 4); // Mostra solo i primi 4
 
   return (
     <section id="projects" className="py-20 bg-background">
@@ -83,10 +22,28 @@ export default function Projects() {
           <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-6">
             I miei progetti
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-8">
             Una selezione dei progetti che ho sviluppato, mostrando le mie competenze 
             tecniche e la mia passione per la creazione di soluzioni innovative.
           </p>
+          
+          {/* Link to full projects page */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <Link
+              href="/projects"
+              className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium"
+            >
+              Vedi tutti i progetti
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </motion.div>
         </motion.div>
 
         {/* Featured Projects */}
@@ -106,28 +63,42 @@ export default function Projects() {
               >
                 <div className="relative overflow-hidden rounded-lg mb-6">
                   <div className="w-full h-48 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                    <span className="text-4xl font-bold text-primary opacity-50">
-                      {project.title.charAt(0)}
-                    </span>
+                    {project.image ? (
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        width={600}
+                        height={400}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <span className="text-4xl font-bold text-primary opacity-50">
+                        {project.title.charAt(0)}
+                      </span>
+                    )}
                   </div>
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <div className="flex space-x-4">
-                      <Link
-                        href={project.demo}
-                        className="btn-primary text-sm"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Demo
-                      </Link>
-                      <Link
-                        href={project.github}
-                        className="btn-secondary text-sm"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        GitHub
-                      </Link>
+                      {project.liveUrl && (
+                        <Link
+                          href={project.liveUrl}
+                          className="btn-primary text-sm"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Demo
+                        </Link>
+                      )}
+                      {project.githubUrl && (
+                        <Link
+                          href={project.githubUrl}
+                          className="btn-secondary text-sm"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          GitHub
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -141,7 +112,7 @@ export default function Projects() {
                 </p>
                 
                 <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech) => (
+                  {project.technologies.map((tech) => (
                     <span
                       key={tech}
                       className="px-3 py-1 bg-accent/10 text-accent text-sm rounded-full font-medium"
@@ -172,28 +143,42 @@ export default function Projects() {
               >
                 <div className="relative overflow-hidden rounded-lg mb-4">
                   <div className="w-full h-32 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                    <span className="text-2xl font-bold text-primary opacity-50">
-                      {project.title.charAt(0)}
-                    </span>
+                    {project.image ? (
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        width={400}
+                        height={200}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <span className="text-2xl font-bold text-primary opacity-50">
+                        {project.title.charAt(0)}
+                      </span>
+                    )}
                   </div>
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <div className="flex space-x-2">
-                      <Link
-                        href={project.demo}
-                        className="btn-primary text-xs px-3 py-1"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Demo
-                      </Link>
-                      <Link
-                        href={project.github}
-                        className="btn-secondary text-xs px-3 py-1"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Code
-                      </Link>
+                      {project.liveUrl && (
+                        <Link
+                          href={project.liveUrl}
+                          className="btn-primary text-xs px-3 py-1"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Demo
+                        </Link>
+                      )}
+                      {project.githubUrl && (
+                        <Link
+                          href={project.githubUrl}
+                          className="btn-secondary text-xs px-3 py-1"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Code
+                        </Link>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -207,7 +192,7 @@ export default function Projects() {
                 </p>
                 
                 <div className="flex flex-wrap gap-1">
-                  {project.tech.slice(0, 3).map((tech) => (
+                  {project.technologies.slice(0, 3).map((tech) => (
                     <span
                       key={tech}
                       className="px-2 py-1 bg-accent/10 text-accent text-xs rounded-full"
@@ -215,9 +200,9 @@ export default function Projects() {
                       {tech}
                     </span>
                   ))}
-                  {project.tech.length > 3 && (
+                  {project.technologies.length > 3 && (
                     <span className="px-2 py-1 text-muted-foreground text-xs">
-                      +{project.tech.length - 3}
+                      +{project.technologies.length - 3}
                     </span>
                   )}
                 </div>
